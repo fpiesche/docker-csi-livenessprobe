@@ -1,7 +1,7 @@
 FROM golang:1.19.1-alpine AS builder
 
-RUN apk add --no-cache git make bash
-ADD livenessprobe/ /livenessprobe/
+RUN apk add --no-cache git make bash && \
+  git clone https://github.com/kubernetes-csi/livenessprobe.git /livenessprobe
 WORKDIR /livenessprobe
 RUN make
 
